@@ -5,24 +5,21 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "torch",
+  "torch>=2.2.0",
 ]
-
-# [project.optional-dependencies]
-# plot = [
-#   "matplotlib >=3.10",
-# ]
 
 [tool.uv.sources]
 torch = [
-  { index = "torch-cpu", marker = "platform_system == 'Darwin'"},
-  { index = "torch-gpu", marker = "platform_system == 'Linux'"},
+  { index = "pytorch-cpu", marker = "platform_system == 'Darwin'" },
+  { index = "pytorch-cu124", marker = "platform_system == 'Linux'" },
 ]
 
 [[tool.uv.index]]
-name = "torch-cpu"
+name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
+explicit = true
 
 [[tool.uv.index]]
-name = "torch-gpu"
+name = "pytorch-cu124"
 url = "https://download.pytorch.org/whl/cu124"
+explicit = true
